@@ -12,11 +12,10 @@ RUN apt install -y iverilog gtkwave python3 python3-pip python3-venv python3-tk 
 RUN mkdir -p /ttsetup
 RUN git clone https://github.com/TinyTapeout/tt-support-tools /ttsetup/tt-support-tools
 
-COPY test/requirements.txt /ttsetup/test_requirements.txt
 COPY .devcontainer/copy_tt_support_tools.sh /ttsetup
 
 RUN python -m venv /ttsetup/venv
-RUN /ttsetup/venv/bin/pip install -r /ttsetup/test_requirements.txt -r /ttsetup/tt-support-tools/requirements.txt
+RUN /ttsetup/venv/bin/pip install -r /ttsetup/tt-support-tools/requirements.txt
 
 # Install verible (for formatting)
 RUN umask 022 && \
